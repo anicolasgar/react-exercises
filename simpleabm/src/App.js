@@ -1,24 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import ReduxDemo from './ReduxDemo';
+import { NavLink, Route } from 'react-router-dom';
+import { Container } from 'semantic-ui-react';
+import ContactListPage from './pages/contact-list-page';
+import ContactFormPage from './pages/contact-form-page';
+import ParticipantListPage from './pages/participant-list-page'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcomeee to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <ReduxDemo /> 
+      <Container>
+      <div className="ui three item menu">
+      <NavLink className="item" activeClassName="active" exact to="/">
+      Lista de contactos
+      </NavLink>
+      <NavLink className="item" activeClassName="active" exact to="/participants/list">
+      Lista de participantes
+      </NavLink>
+      <NavLink className="item" activeClassName="active" exact to="/contacts/new">
+      Agregar Contacto
+      </NavLink>
       </div>
-    );
+      <Route exact path="/" component={ContactListPage}/>
+      <Route path="/contacts/new" component={ContactFormPage}/>
+      <Route path="/contacts/edit/:_id" component={ContactFormPage}/>
+      <Route path="/participants/list" component={ParticipantListPage}/>
+      </Container>
+      );
   }
 }
-
 
 export default App;
