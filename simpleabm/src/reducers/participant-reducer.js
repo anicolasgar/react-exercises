@@ -1,13 +1,14 @@
+
 const defaultState = {
-  contacts: []
+  participants: []
 }
 
 export default (state=defaultState, action={}) => {
   switch (action.type) {
-    case 'FETCH_CONTACTS': {
+    case 'FETCH_PARTICIPANTS': {
       return {
         ...state,
-        contacts: action.payload
+        participants: action.payload
       }
     }
     default:

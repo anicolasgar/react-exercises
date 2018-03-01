@@ -1,9 +1,21 @@
+
 import React from 'react';
 
-export default function ParticipantList(){
+export default function ContactList({participants}){
+
+  const list = () => {
+    return participants.map(participant => {
+      return (
+        <li key={participant._id}>{participant.name.first} {participant.name.last} </li>
+      )
+    })
+  }
+
   return (
     <div>
-      <p>No hay participantes aun</p>
+      <ul>
+        { list() }
+      </ul>
     </div>
   )
 }
