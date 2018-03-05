@@ -9,11 +9,11 @@ export function fetchParticipants() {
 	}
 }
 
-export function saveParticipant(contact) {
+export function saveParticipant(newParticipant) {
   return dispatch => {
     return dispatch({
-      type: 'SAVE_CONTACT',
-      //payload: client.post(url, contact)
+      type: 'SAVE_PARTICIPANT',
+      newParticipant: newParticipant//client.post(url, newParticipant)
     })
   }
 }

@@ -15,40 +15,34 @@ export const groups = [
 ];
 
 export const participants = [
-  {
-    _id: "1",
-    name: {
-      first:"Nicolas",
-      last:"uno"
-    },
-    phone:"555",
-    email:"nico@gmail.com"
-  },
-  {
-    _id: "2",
-    name: {
-      first:"Bruce",
-      last:"dos"
-    },
-    phone:"777",
-    email:"bruce.wayne@gmail.com"
-  },
-  {
-    _id: "3",
-    name: {
-      first:"Juan",
-      last:"tres"
-    },
-    phone:"777",
-    email:"juan.tres@gmail.com"
-  },
-  {
-    _id: "4",
-    name: {
-      first:"Pepito",
-      last:"cuatro"
-    },
-    phone:"777",
-    email:"pepitocuatro@gmail.com"
-  }
+{
+  _id: "1",
+  usuario: "user1",
+  equipo: "casla"
+},
+{
+  _id: "2",
+  usuario: "user2",
+  equipo: "river"
+}, {
+  _id: "3",
+  usuario: "user3",
+  equipo: "racing"
+}, {
+  _id: "4",
+  usuario: "user4",
+  equipo: "gimnasia"
+}
+];
+
+export const participants2 = [
+{
+  _id: "5",
+  usuario: "user5",
+  equipo: "sarsa"
+}, {
+  _id: "6",
+  usuario: "user6",
+  equipo: "soso"
+}
 ];

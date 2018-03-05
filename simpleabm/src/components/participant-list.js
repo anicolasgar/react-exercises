@@ -6,7 +6,7 @@ export default function ContactList({participants}){
   const list = () => {
     return participants.map(participant => {
       return (
-        <li key={participant._id}>{participant.name.first} {participant.name.last} </li>
+        <li key={participant._id}>{participant.usuario}: {participant.equipo} </li>
       )
     })
   }

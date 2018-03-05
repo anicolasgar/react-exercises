@@ -3,58 +3,69 @@ import { Redirect } from 'react-router';
 import { SubmissionError } from 'redux-form';
 import { connect } from 'react-redux';
 import { newContact, saveContact, fetchContact, updateContact } from '../actions/contact-actions';
-import NewParticipantForm from '../components/NewParticipant-form';
+import { saveParticipant } from '../actions/participant-actions';
 
 
 class NewParticipantPage extends Component {
 
-  state = {
-    redirect: false
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      usuario: "",
+      equipo: ""
+    };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
   }
 
-  componentDidMount = () => {
-    const { _id } = this.props.match.params;
-    if(_id){
-      this.props.fetchContact(_id)
-    } else {
-      this.props.newContact();
-    }
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
   }
 
-  submit = (contact) => {
-    if(!contact._id) {
-      return this.props.saveContact(contact)
-        .then(response => this.setState({ redirect:true }))
-        .catch(err => {
-           throw new SubmissionError(this.props.errors)
-         })
-    } else {
-      return this.props.updateContact(contact)
-        .then(response => this.setState({ redirect:true }))
-        .catch(err => {
-           throw new SubmissionError(this.props.errors)
-         })
-    }
-  }
+  handleSubmit(event) {
+    // alert('A name was submitted: ');
+    this.props.saveParticipant(this.state);
+   //event.preventDefault();
+ }
 
-  render() {
-    return (
+ componentDidMount = () => {
+ }
+
+
+ render() {
+  return (
+    <div>
+    {
       <div>
-        {
-          this.state.redirect ?
-          <Redirect to="/" /> :
-          <NewParticipantForm contact={this.props.contact} loading={this.props.loading} onSubmit={this.submit} />
-        }
+      <form className="form-inline add-item" onSubmit={this.handleSubmit}>
+      <input type="text" className="form-control description" name="usuario" 
+      value={this.state.usuario} placeholder="Usuario" onChange={this.handleInputChange} />
+      <input type="text" className="form-control" name="equipo" 
+      value={this.state.equipo} placeholder="Equipo" onChange={this.handleInputChange} />
+      <button type="submit" className="btn btn-primary add">Agregar</button>
+      </form>
       </div>
+    }
+    </div>
     )
-  }
+}
 }
 
 function mapStateToProps(state) {
   return {
-    contact: state.contactStore.contact,
-    errors: state.contactStore.errors
+    // contact: state.contactStore.contact,
+    // errors: state.contactStore.errors
   }
 }
 
-export default connect(mapStateToProps, {newContact, saveContact, fetchContact, updateContact})(NewParticipantPage);
+export default connect(mapStateToProps, {saveParticipant})(NewParticipantPage);

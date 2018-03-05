@@ -1,6 +1,6 @@
-
 const defaultState = {
-  participants: []
+  participants: [],
+  newParticipants: []
 }
 
 export default (state=defaultState, action={}) => {
@@ -8,7 +8,13 @@ export default (state=defaultState, action={}) => {
     case 'FETCH_PARTICIPANTS': {
       return {
         ...state,
-        participants: action.payload
+        participants: action.payload.concat(state.newParticipants)
+      }
+    }
+    case 'SAVE_PARTICIPANT': {
+      return {
+        ...state,
+        newParticipants: state.newParticipants.push(action.newParticipant)
       }
     }
     default:
