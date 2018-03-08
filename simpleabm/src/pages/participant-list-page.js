@@ -8,7 +8,12 @@ class ParticipantListPage extends Component {
 
   constructor(props) {
     super(props);
-
+    this.state = {
+      torneo:{
+        organizador: 'nico',
+        nombre: "superliga"
+      }
+    };
   }
 
   componentDidMount() {
@@ -16,22 +21,23 @@ class ParticipantListPage extends Component {
   }
 
 
- render() {
-  return (
+  render() {
+    return (
 
-    <div>
-    <NewParticipant newParticipant/>
-    <h1>List de participantes</h1>
-    <ParticipantList participants={this.props.participants}/>
-    </div>
-    )
-}
+      <div>
+      <h1>Torneo {this.state.torneo.nombre} de {this.state.torneo.organizador}</h1>
+      <NewParticipant torneo={this.state.torneo}/>
+      <h2>List de participantes</h2>
+      <ParticipantList participants={this.props.participants}/>
+      </div>
+      )
+  }
 }
 
-// Make contacts  array available in  props
+// Make participants array available in  props
 function mapStateToProps(state) {
   return {
-    participants : state.participantStore.participants.concat(state.participantStore.newParticipants)
+    participants : state.participantStore.participants
   }
 }
 

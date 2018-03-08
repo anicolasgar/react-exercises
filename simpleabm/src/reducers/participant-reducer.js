@@ -1,6 +1,6 @@
 const defaultState = {
   participants: [],
-  newParticipants: []
+  newParticipant: {organizador:{}, torneo:{}}
 }
 
 export default (state=defaultState, action={}) => {
@@ -8,16 +8,22 @@ export default (state=defaultState, action={}) => {
     case 'FETCH_PARTICIPANTS': {
       return {
         ...state,
-        participants: action.payload.concat(state.newParticipants)
+        participants: action.payload//.concat(state.newParticipants)
       }
     }
-    case 'SAVE_PARTICIPANT': {
+    case "FETCH_PARTICIPANTS_FULFILLED": {
       return {
         ...state,
-        newParticipants: state.newParticipants.push(action.newParticipant)
+        participants: action.payload.data.data || action.payload.data // in case pagination is disabled
+      }
+    }
+    case 'SAVE_PARTICIPANT_FULFILLED': {
+      return {
+        ...state,
+        participants: [...state.participants, action.payload.data],
       }
     }
     default:
-      return state;
+    return state;
   }
 }

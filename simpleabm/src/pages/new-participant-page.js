@@ -13,6 +13,8 @@ class NewParticipantPage extends Component {
     super(props);
 
     this.state = {
+      torneo:this.props.torneo.nombre,
+      organizador:this.props.torneo.organizador,
       usuario: "",
       equipo: ""
     };
@@ -47,6 +49,7 @@ class NewParticipantPage extends Component {
     <div>
     {
       <div>
+      <div>Nuevo participante:</div>
       <form className="form-inline add-item" onSubmit={this.handleSubmit}>
       <input type="text" className="form-control description" name="usuario" 
       value={this.state.usuario} placeholder="Usuario" onChange={this.handleInputChange} />

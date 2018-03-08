@@ -19,7 +19,15 @@ require('mongoose-type-email');
 
 module.exports = function (app) {
 	const mongooseClient = app.get('mongooseClient');
-	const contact = new mongooseClient.Schema({
+	const fixture = new mongooseClient.Schema({
+		torneo : {
+			type: String,
+			required: [true, 'Torneo es requerido']
+		},
+		organizador : {
+			type: String,
+			required: [true, 'Organizador es requerido']
+		},
 		usuario : {
 			type: String,
 			required: [true, 'Usuario es requerido']
@@ -32,5 +40,5 @@ module.exports = function (app) {
 		updatedAt: { type: Date, 'default': Date.now }
 	});
 
-	return mongooseClient.model('contact', contact);
+	return mongooseClient.model('fixture', fixture);
 };

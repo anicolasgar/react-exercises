@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-export default function ContactList({participants}){
+export default function ParticipantList({participants}){
 
   const list = () => {
     return participants.map(participant => {
