@@ -7,7 +7,6 @@ export function fetchParticipants() {
 	return dispatch => {
 		dispatch({
 			type:'FETCH_PARTICIPANTS',
-			// payload: participants 
 			payload: client.get(urlFixture)
 		})
 	}

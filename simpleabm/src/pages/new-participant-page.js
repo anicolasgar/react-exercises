@@ -37,7 +37,7 @@ class NewParticipantPage extends Component {
   handleSubmit(event) {
     // alert('A name was submitted: ');
     this.props.saveParticipant(this.state);
-   //event.preventDefault();
+   event.preventDefault();
  }
 
  componentDidMount = () => {
@@ -50,12 +50,12 @@ class NewParticipantPage extends Component {
     {
       <div>
       <div>Nuevo participante:</div>
-      <form className="form-inline add-item" onSubmit={this.handleSubmit}>
+      <form className="form-inline add-item">
       <input type="text" className="form-control description" name="usuario" 
       value={this.state.usuario} placeholder="Usuario" onChange={this.handleInputChange} />
       <input type="text" className="form-control" name="equipo" 
       value={this.state.equipo} placeholder="Equipo" onChange={this.handleInputChange} />
-      <button type="submit" className="btn btn-primary add">Agregar</button>
+      <button onClick={this.handleSubmit} className="btn btn-primary add">Agregar</button>
       </form>
       </div>
     }

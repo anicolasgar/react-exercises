@@ -5,12 +5,7 @@ const defaultState = {
 
 export default (state=defaultState, action={}) => {
   switch (action.type) {
-    case 'FETCH_PARTICIPANTS': {
-      return {
-        ...state,
-        participants: action.payload//.concat(state.newParticipants)
-      }
-    }
+
     case "FETCH_PARTICIPANTS_FULFILLED": {
       return {
         ...state,
