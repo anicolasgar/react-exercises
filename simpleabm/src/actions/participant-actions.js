@@ -20,3 +20,12 @@ export function saveParticipant(newParticipant) {
     })
   }
 }
+
+export function updateParticipant(aParticipant){
+	return dispatch => {
+		return dispatch({
+			type: 'UPDATE_PARTICIPANT',
+			payload: client.put(`${urlFixture}/${aParticipant._id}`, aParticipant)
+		})
+	}
+}

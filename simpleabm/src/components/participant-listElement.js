@@ -1,0 +1,4 @@
+class ParticipantListElement extends Component {
+
+	
+}

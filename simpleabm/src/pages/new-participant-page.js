@@ -13,61 +13,65 @@ class NewParticipantPage extends Component {
     super(props);
 
     this.state = {
-      torneo:this.props.torneo.nombre,
-      organizador:this.props.torneo.organizador,
-      usuario: "",
-      equipo: ""
-    };
+     redirect: false,
+     torneo:this.props.torneo.nombre,
+     organizador:this.props.torneo.organizador,
+     usuario: "",
+     equipo: ""
+   };
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+   this.handleInputChange = this.handleInputChange.bind(this);
+   this.handleSubmit = this.handleSubmit.bind(this);
 
-  }
-
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-
-    this.setState({
-      [name]: value
-    });
-  }
-
-  handleSubmit(event) {
-    // alert('A name was submitted: ');
-    this.props.saveParticipant(this.state);
-   event.preventDefault();
  }
 
- componentDidMount = () => {
- }
+ handleInputChange(event) {
+  const target = event.target;
+  const value = target.value;
+  const name = target.name;
 
-
- render() {
-  return (
-    <div>
-    {
-      <div>
-      <div>Nuevo participante:</div>
-      <form className="form-inline add-item">
-      <input type="text" className="form-control description" name="usuario" 
-      value={this.state.usuario} placeholder="Usuario" onChange={this.handleInputChange} />
-      <input type="text" className="form-control" name="equipo" 
-      value={this.state.equipo} placeholder="Equipo" onChange={this.handleInputChange} />
-      <button onClick={this.handleSubmit} className="btn btn-primary add">Agregar</button>
-      </form>
-      </div>
-    }
-    </div>
-    )
+  this.setState({
+    [name]: value
+  });
 }
+
+handleSubmit(event) {
+    // alert('holis');
+    this.props.saveParticipant(this.state)
+    .then(response => this.setState({ usuario: "",equipo: "" }))
+    .catch(err => {
+     throw new SubmissionError(this.props.errors)
+   })
+
+    event.preventDefault();
+  }
+
+  componentDidMount = () => {
+  }
+
+  render() {
+    return (
+      <div>
+      {
+        <div>
+        <div>Nuevo participante:</div>
+        <form className="form-inline add-item">
+        <input type="text" className="form-control description" name="usuario" 
+        value={this.state.usuario} placeholder="Usuario" onChange={this.handleInputChange} />
+        <input type="text" className="form-control" name="equipo" 
+        value={this.state.equipo} placeholder="Equipo" onChange={this.handleInputChange} />
+        <button onClick={this.handleSubmit} className="btn btn-primary add">Agregar</button>
+        </form>
+        </div>
+      }
+      </div>
+      )
+  }
 }
 
 function mapStateToProps(state) {
   return {
-    // contact: state.contactStore.contact,
-    // errors: state.contactStore.errors
+    errors: state.contactStore.errors
   }
 }
 
