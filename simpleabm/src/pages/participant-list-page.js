@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import ParticipantList from '../components/participant-list';
+import ParticipantListElement from '../components/participant-listElement';
 import NewParticipant from './new-participant-page';
 import { fetchParticipants } from '../actions/participant-actions';
 
@@ -49,14 +50,8 @@ function ParticipantsList({participants}){
     return participants.map(participant => {
       return (
         <li key={participant._id}>
-        User: 
-        <input type="text" className="form-control description" name="usuario" 
-        value={participant.usuario} />
-        Equipo:
-        <input type="text" className="form-control description" name="equipo" 
-        value={participant.equipo} />
-        
-        <button  onClick={() => handleUpdate(participant)} className="btn btn-primary add">{participant.torneo}</button></li>
+        <ParticipantListElement participant={participant}/>
+        </li>
         )
     })
   }
@@ -70,15 +65,6 @@ function ParticipantsList({participants}){
     )
 }
 
-
-
-function handleUpdate(participant){
-  // TODO - Mejorar esto
-  // https://stackoverflow.com/questions/29810914/react-js-onclick-cant-pass-value-to-method
-  console.log(participant)
-  // updateParticipant(participant);
-
-}
 
 
 export default connect(mapStateToProps, {fetchParticipants})(ParticipantListPage);
