@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink, Route } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
-import ContactFormPage from './pages/contact-form-page';
 import ParticipantListPage from './pages/participant-list-page'
 
 class App extends Component {
@@ -12,13 +11,12 @@ class App extends Component {
       <NavLink className="item" activeClassName="active" exact to="/">
       Torneos
       </NavLink>
-      <NavLink className="item" activeClassName="active" exact to="/contacts/new">
-      Agregar Contacto
+      <NavLink className="item" activeClassName="active" exact to="/otros">
+      Otros
       </NavLink>
       </div>
       <Route exact path="/" component={ParticipantListPage}/>
-      <Route path="/contacts/new" component={ContactFormPage}/>
-      <Route path="/contacts/edit/:_id" component={ContactFormPage}/>
+      <Route path="/otros/:_id" component={ParticipantListPage}/>
       </Container>
       );
   }

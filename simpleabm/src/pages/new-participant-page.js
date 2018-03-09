@@ -2,7 +2,6 @@ import React, { Component} from 'react';
 import { Redirect } from 'react-router';
 import { SubmissionError } from 'redux-form';
 import { connect } from 'react-redux';
-import { newContact, saveContact, fetchContact, updateContact } from '../actions/contact-actions';
 import { saveParticipant } from '../actions/participant-actions';
 
 
@@ -71,7 +70,7 @@ handleSubmit(event) {
 
 function mapStateToProps(state) {
   return {
-    errors: state.contactStore.errors
+    errors: state.participantStore.errors
   }
 }
 
