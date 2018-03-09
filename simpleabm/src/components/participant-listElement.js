@@ -45,7 +45,6 @@ class ParticipantListElement extends Component {
 			</div>
 			)
 	}
-
 }
 
 function mapStateToProps(state) {
