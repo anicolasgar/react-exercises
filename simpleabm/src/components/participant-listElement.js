@@ -6,12 +6,13 @@ class ParticipantListElement extends Component {
 
 	constructor(props) {
 		super(props);
-		// console.log(props);
-		this.handleInputChange = this.handleInputChange.bind(this);
+
+		// this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleUpdate = this.handleUpdate.bind(this);
 	}
 
 	handleInputChange(event) {
+
 		const target = event.target;
 		const value = target.value;
 		const name = target.name;
@@ -21,29 +22,29 @@ class ParticipantListElement extends Component {
 		});
 	}
 
-		handleUpdate(participant){
-  // TODO - Mejorar esto
-  // https://stackoverflow.com/questions/29810914/react-js-onclick-cant-pass-value-to-method
-  console.log(participant);
-  // updateParticipant(participant);
+	handleUpdate(participant){
+		console.log(participant);
 
-}
+	}
 
-render() {
-	return (
+	componentDidMount = () => {
+	}
 
-		<div>
-		User: 
-		<input type="text" className="form-control description" name="usuario" 
-		value={this.props.participant.usuario} onChange={this.handleInputChange} />
-		Equipo:
-		<input type="text" className="form-control description" name="equipo" 
-		value={this.props.participant.equipo} onChange={this.handleInputChange} />
+	render() {
+		return (
 
-		<button onClick={this.handleUpdate} className="btn btn-primary add">Modificar</button>
-		</div>
-		)
-}
+			<div>
+			User: 
+			<input type="text" className="form-control description" name="usuario" 
+			value={this.props.participant.usuario} onChange={this.handleInputChange} />
+			Equipo:
+			<input type="text" className="form-control description" name="equipo" 
+			value={this.props.participant.equipo} onChange={this.handleInputChange} />
+
+			<button onClick={this.handleUpdate} className="btn btn-primary add">Modificar</button>
+			</div>
+			)
+	}
 
 }
 
