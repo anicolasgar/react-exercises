@@ -27,15 +27,21 @@ export default (state=defaultState, action={}) => {
         loading: false
       }
     }
-
-    case 'UPDATE_CONTACT_REJECTED': {
-      const data = action.payload.response.data;
-      const { "name.first":first, "name.last":last, phone, email } = data.errors;
-      const errors = { global: data.message, name: { first,last }, phone, email };
+    // case 'UPDATE_PARTICIPANT_REJECTED': {
+    //   const data = action.payload.response.data;
+    //   const { "name.first":first, "name.last":last, phone, email } = data.errors;
+    //   const errors = { global: data.message, name: { first,last }, phone, email };
+    //   return {
+    //     ...state,
+    //     errors: errors,
+    //     loading: false
+    //   }
+    // }
+    case 'DELETE_PARTICIPANT_FULFILLED': {
+      const _id = action.payload.data._id;
       return {
         ...state,
-        errors: errors,
-        loading: false
+        participants: state.participants.filter(item => item._id !== _id)
       }
     }
     default:

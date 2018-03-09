@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-import { updateParticipant } from '../actions/participant-actions';
+import { updateParticipant, deleteParticipant } from '../actions/participant-actions';
 
 
 class ParticipantListElement extends Component {
@@ -11,6 +11,7 @@ class ParticipantListElement extends Component {
 
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleUpdate = this.handleUpdate.bind(this);
+		this.handleDelete = this.handleDelete.bind(this);
 	}
 
 	handleInputChange(event) {
@@ -27,10 +28,14 @@ class ParticipantListElement extends Component {
 
 	}
 
-	handleUpdate(participant){
-		console.log("participant");
+	handleUpdate(){
 		console.log(this.state.participant);
 		this.props.updateParticipant(this.state.participant);
+	}
+
+	handleDelete(){
+		console.log(this.state.participant);
+		this.props.deleteParticipant(this.state.participant);
 	}
 
 	componentDidMount = () => {
@@ -48,13 +53,14 @@ class ParticipantListElement extends Component {
 			value={this.state.participant.equipo} onChange={this.handleInputChange} />
 
 			<button onClick={this.handleUpdate} className="btn btn-primary add">Modificar</button>
+			<button onClick={this.handleDelete} className="btn btn-primary add">Delete</button>
 			</div>
 			)
 	}
 }
 
 function mapStateToProps(state) {
-  return {
-  }
+	return {
+	}
 }
-export default connect(mapStateToProps,{updateParticipant})(ParticipantListElement);
+export default connect(mapStateToProps,{updateParticipant,deleteParticipant})(ParticipantListElement);
