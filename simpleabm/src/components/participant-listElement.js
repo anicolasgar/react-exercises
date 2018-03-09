@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import { updateParticipant, deleteParticipant } from '../actions/participant-actions';
+import { ToastContainer,toast } from 'react-toastify';
 
 
 class ParticipantListElement extends Component {
@@ -31,11 +32,18 @@ class ParticipantListElement extends Component {
 	handleUpdate(){
 		console.log(this.state.participant);
 		this.props.updateParticipant(this.state.participant);
+		toast.success("Modificado con exito!", {
+			position: toast.POSITION.TOP_CENTER
+		});
 	}
+
 
 	handleDelete(){
 		console.log(this.state.participant);
 		this.props.deleteParticipant(this.state.participant);
+		toast.success("Eliminado con exito!", {
+			position: toast.POSITION.TOP_CENTER
+		});
 	}
 
 	componentDidMount = () => {
@@ -54,6 +62,8 @@ class ParticipantListElement extends Component {
 
 			<button onClick={this.handleUpdate} className="btn btn-primary add">Modificar</button>
 			<button onClick={this.handleDelete} className="btn btn-primary add">Delete</button>
+			<ToastContainer />
+
 			</div>
 			)
 	}
