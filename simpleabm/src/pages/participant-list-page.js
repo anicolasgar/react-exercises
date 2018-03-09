@@ -1,6 +1,5 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-import ParticipantList from '../components/participant-list';
 import ParticipantListElement from '../components/participant-listElement';
 import NewParticipant from './new-participant-page';
 import { fetchParticipants } from '../actions/participant-actions';
@@ -11,8 +10,8 @@ class ParticipantListPage extends Component {
     super(props);
     this.state = {
       torneo:{
-        organizador: 'nico',
-        nombre: "superliga"
+        organizador: 'a',
+        nombre: "b"
       }
     };
   }

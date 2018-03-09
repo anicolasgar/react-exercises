@@ -18,11 +18,11 @@ export default (state=defaultState, action={}) => {
         participants: [...state.participants, action.payload.data],
       }
     }
-    case 'UPDATE_CONTACT_FULFILLED': {
-      const contact = action.payload.data;
+    case 'UPDATE_PARTICIPANT_FULFILLED': {
+      const aParticipant = action.payload.data;
       return {
         ...state,
-        contacts: state.contacts.map(item => item._id === contact._id ? contact : item),
+        participants: state.participants.map(item => item._id === aParticipant._id ? aParticipant : item),
         errors: {},
         loading: false
       }
